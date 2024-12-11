@@ -1,0 +1,134 @@
+<header class="header">
+    <h2> Ticket Time Tracker </h2> 
+</header>
+<div class="existing3">
+  <h3> Existing tickets </h3>
+</div>
+<div class="dispaly_page3">
+  <div class = "data_table3">
+  <table>
+  <thead>
+    <tr>
+      <th> Ticket </th>
+      <th> Time Logged </th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <% if @tickets.present? %>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td class="dumy-class">
+          <img src="/assets/123.png" title="This is a tooltip text" width="20.51" height="20.51" alt="Image description">
+          <%= ticket.summary %>
+        </td>
+        <td>
+      <% if ticket.hours.nil? || ticket.hours.zero? %>
+        <%= link_to "Log Time", edit_ticket_path(ticket) %>
+      <% else %>
+        <%= ticket.formatted_time %>
+      <% end %>
+    </td>
+       
+        
+      </tr>
+    <% end %>
+    <% else %>
+      <tr>
+        <td colspan="2">No tickets available.</td>
+      </tr>
+    <% end %>
+  
+  </tbody>
+</table>
+<div class="pagination">
+<% if @pagy.present? %>
+<%== pagy_nav(@pagy) %>
+<% else %>
+<p>No tickets to paginate.</p>
+<% end %>
+</div>
+</div>
+
+   <div class="form3">
+        <div class = "edit_font">
+          <img src="/assets/123.png" title="This is a tooltip text" class= "image_class" width="22.51" height="22.51" alt="Image description">
+          <h3 class = "font_class"> <%= @ticket.summary%></h3>
+        </div>
+
+          <div class="log">
+            <h3> Log time manually</h3>
+
+          </div>
+            <div class="log1">
+              <div class= "numm">
+              <input type = "number" class="num">
+              </div>
+              <div class="pic">
+              <img src="/assets/124.png" title="This is a tooltip text" class= "image_class" width="18.51" height="18.51" alt="Image description">
+
+              </div>
+              
+          
+            </div>
+
+              <div class="links">
+                 <div class="link">
+                   <h4>Track with Timer</h4>
+                 </div>
+
+                 <div class="url">
+                   <a href="URL">Use count down timer</a>
+                  </div>
+                </div>
+
+                 <div class="images">
+                   <div class="image1">
+                     <input type = "number" class="num1">
+                   </div>
+                   <div class="image2">
+                   <span class="colon">:</span>
+                   </div>
+                   <div class="image3">
+                   <input type = "number" class="num2">
+                   </div>
+                   <div class="image4">
+                   <span class="colon">:</span>
+                   </div>
+                   <div class="image5">
+                     <input type = "number" class="num3">
+                   </div>
+                 </div>
+                    <div class="buttons">
+                       <div class="btn1">
+                       <a href="URL">Reset</a>
+                       </div>
+                        <div class="btn2">
+                          <input type="button" value="Start" class="btn_class1">
+                        </div>
+                        <div class="btn3">
+                          <a href="URL">Stop</a>
+                        </div>
+                        
+                    </div>
+                    <div class="line">
+                      <hr class="kiki">
+                    </div>
+                    <div class="notes">
+                       <fieldset>
+                      <legend>Notes</legend>
+                      <textarea id="comments" name="comments" rows="5" cols="40"></textarea>
+
+                      </fieldset>
+                    </div>
+                    <div class ="btnnnn">
+                    <div class="buttons1">
+                    <%= button_tag "Save", type: "button", class: "btn_class22", id: "save_button" %>
+                    </div>
+                  <div class="buttons2">
+                  <%= button_tag "Cancel", type: "button", class: "btn_class33", id: "cancel_button" %>
+                  </div>
+                  </div>
+
+    </div>
+</div>

@@ -1,0 +1,53 @@
+
+<header class="header">
+  <h2>Ticket Time Tracker</h2>
+</header>
+
+<div class="existing">
+  <h3>Existing Tickets</h3>
+</div>
+
+<div class="dispaly_page1">
+  <div class="data_table">
+    <table>
+      <thead>
+        <tr>
+          <th>Ticket</th>
+          <th>Time Logged</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tickets.each do |ticket| %>
+          <tr>
+            <td class="dumy-class">
+              <img src="/assets/123.png" title="This is a tooltip text" width="20.51" height="20.51" alt="Image description">
+              <%= ticket.summary %>
+            </td>
+            <td>
+            <% if ticket.hours.nil? || ticket.hours.zero? %>
+            <%= link_to "Log Time", edit_ticket_path(ticket) %>
+          <% else %>
+            <%= ticket.formatted_time %>
+          <% end %>
+        </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <%== pagy_nav(@pagy) %>
+    </div
+  </div>
+</div>
+
+
+  <div class="form2">
+    <h4 class= text-class> Select an existing ticket to log time <h4>
+    <h4 class= or-class> Or </h4>
+    <h4 class= create-class><%= link_to "Create a new one", new_ticket_path %> </h4>
+    <input type = "text" class="text-field">
+    <input type = "text" class="text-field">
+    <input type = "text" class="text-field1">
+    <input type = "text" class="text-field1">
+  <div>
+<div>

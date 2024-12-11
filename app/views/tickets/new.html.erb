@@ -1,0 +1,101 @@
+<header class="header">
+    <h2> Ticket Time Tracker </h2> 
+</header>
+<div class="existing">
+  <h3> Existing tickets </h3>
+</div>
+<div class="dispaly_page">
+  <div class = "data_table1">
+    <table>
+      <thead>
+        <tr>
+          <th> Ticket </th>
+          <th> Time Logged </th>
+
+        </tr>
+      </thead>
+      <tbody>
+      <% if @tickets.present? %>
+        <% @tickets.each do |ticket| %>
+          <tr>
+            <td class="dumy-class">
+              <img src="/assets/123.png" title="This is a tooltip text" width="20.51" height="20.51" alt="Image description">
+              <%= ticket.summary %>
+            </td>
+            <td>
+          <% if ticket.hours.nil? || ticket.hours.zero? %>
+            <%= link_to "Log Time", edit_ticket_path(ticket) %>
+          <% else %>
+            <%= ticket.formatted_time %>
+          <% end %>
+        </td>
+           
+            
+          </tr>
+        <% end %>
+        <% else %>
+          <tr>
+            <td colspan="2">No tickets available.</td>
+          </tr>
+        <% end %>
+      
+      </tbody>
+    </table>
+    <div class="pagination">
+    <% if @pagy.present? %>
+    <%== pagy_nav(@pagy) %>
+  <% else %>
+    <p>No tickets to paginate.</p>
+  <% end %>
+    </div>
+  </div>
+
+
+  <div class="form1">
+  <%= form_with model: @ticket, local: true do |form| %>
+    <h3 class="heading_class">Create New Ticket</h3>
+
+    <fieldset>
+      <legend>Ticket Type</legend>
+      <img src="/assets/123.png" title="This is a tooltip text" width="15.51" height="15.51" alt="Image description">
+      <%= form.select :ticket_type, Ticket.ticket_types.keys.map { |type| [type.humanize, type] }, { id:"ticket-type"  } %>
+   
+    </fieldset>
+
+    <div class="field">
+      <fieldset>
+        <legend>Summary</legend>
+        <%= form.text_field :summary, class: "text-field3" %>
+      </fieldset>
+    </div>
+
+    <div class="field_area">
+      <fieldset>
+        <legend>Details</legend>
+        <%= form.text_area :details, id: "ticket-description", name: "ticket-description", rows: 5, cols: 27 %>
+      </fieldset>
+    </div>
+
+    <div class="field_area1">
+      <fieldset>
+        <legend>Hours</legend>
+        <%= form.number_field :hours, class: "number" %>
+      </fieldset>
+      <div class="abc">
+        <img src="/assets/124.png" title="This is a tooltip text" class="image_class" width="22.51" height="22.51" alt="Image description">
+      </div>
+    </div>
+
+    <div class="button">
+      <%= form.submit "Save Ticket", class: "btn_class" %>
+    </div>
+
+    <div class="button">
+    <button class="btn_class2" onclick="window.location.href='<%= root_path %>'">
+     Cancel
+    </button>
+    </div>
+    <% end %>
+  </div>
+
+</div>

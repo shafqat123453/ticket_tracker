@@ -1,0 +1,448 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+.header h2 {
+  color: white;
+  margin-left: 80px;
+}
+.existing {
+  margin-left: 80px;
+  margin-top: 30px;
+}
+.header {
+  width: auto;
+  background-color: black;
+  padding: 5px;
+  margin: 0px;
+
+}
+.container,
+table h3 {
+  margin-top: 50px;
+  margin-left: 80px;
+}
+
+.data_table table {
+  border-collapse: separate;
+  spacing: 40px;
+  width: 52%;
+}
+
+.data_table th {
+  text-align: left;
+}
+.data_table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dumy-class {
+  border-right: 1px solid #ddd;
+  margin-left: 50px;
+}
+.form {
+  background-color: lightgrey;
+  width: 400px;
+  height: 450px;
+  margin-left: 750px;
+  margin-top: -300px;
+}
+
+.text-class {
+  text-align: center;
+  padding-top: 30px;
+}
+.or-class {
+  text-align: center;
+}
+.create-class {
+  text-align: center;
+}
+.text-field {
+  margin-left: 60px;
+  width: 270px;
+  background-color: #D9D9D9;
+  margin-bottom: 20px;
+  border: none;
+  outline: none;
+}
+.text-field1 {
+  margin-left: 59px;
+  width: 102px;
+  background-color: #D9D9D9;
+  margin-bottom: 20px;
+  border: none;
+  outline: none;
+
+}
+.text-field2 {
+  margin-left: 40px;
+  width: 110px;
+  background-color: #D9D9D9;
+  margin-bottom: 20px;
+  border: none;
+  outline: none;
+
+}
+.dispaly_page {
+  display: flex;
+  padding: 90px;
+  margin-top: -100px;
+}
+.form1 {
+  width: 400px;
+  height: 550px;
+  background-color: rgb(248, 248, 248);
+  margin-left: 400px;
+  margin-top: -10px;
+  border: 1px solid #080808;
+  border-radius: 10px;
+}
+.data_table1 table {
+  border-collapse: separate;
+  spacing: 70px;
+  width: 180%;
+  margin-top: 30px;
+}
+.data_table1 th {
+  text-align: left;
+}
+.data_table1 td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.heading_class {
+  margin-left: 30px;
+}
+#ticket-type {
+  width: 190px;
+  border: none;
+  margin-left: 2px;
+  background-color: rgb(248, 248, 248);
+  outline: none;
+}
+.form1 fieldset {
+  width: 250px;
+  margin-left: 40px;
+  border-radius: 5px;
+}
+.field {
+  margin-top: 20px;
+}
+.dispaly_page{
+
+  display: flex;
+}
+.text-field3 {
+  outline: none;
+  background-color: rgb(248, 248, 248);
+  border: none;
+  width: 250px;
+}
+.field fieldset {
+  height: 30px;
+}
+.field_area {
+  margin-top: 20px;
+}
+#ticket-description {
+  border: none;
+  outline: none;
+  background-color: rgb(248, 248, 248);
+}
+.number {
+  outline: none;
+  border: none;
+  background-color: rgb(242, 242, 242);
+  width: 200px;
+}
+.button {
+  margin-top: 20px;
+  padding-left: 130px;
+  border-radius: 8px;
+}
+.btn_class {
+  width: 280px;
+  height: 40px;
+  margin-left: -90px;
+  background-color: #08ceff;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn_class2 {
+  width: 280px;
+  height: 40px;
+  margin-left: -90px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  border: 1px solid #00c5f7;
+  color: #00c5f7;
+}
+.edit_class {
+  width: 25px;
+  height: 25px;
+  border-top-left-radius: #080808;
+  margin-left: 17px;
+}
+
+.form2 {
+  width: 400px;
+  height: 450px;
+  background-color: #EFEFF0;
+  margin-left: 400px;
+  margin-top: 70px;
+  border: 1px solid #EFEFF0;
+  border-radius: 10px;
+}
+.dispaly_page1 {
+  display: flex;
+  padding: 90px;
+  margin-top: -170px;
+}
+.data_table table {
+  border-collapse: separate;
+  spacing: 70px;
+  width: 190%;
+}
+.data_table th {
+  text-align: left;
+}
+.data_table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.data_table {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-top: 80px;
+  margin-right: -30px;
+}
+.existing1 {
+  margin-left: 80px;
+  margin-top: 10px;
+}
+.form3 {
+  width: 454px;
+  height: 728px;
+  background-color: rgb(248, 248, 248);
+  margin-left: 420px;
+  margin-top: 80px;
+  border: 1px solid #b4b4b8;
+  border-radius: 10px;
+}
+.dispaly_page3 {
+  display: flex;
+  padding: 90px;
+  margin-top: -180px;
+}
+.existing3 {
+  margin-left: 80px;
+  margin-top: 10px;
+}
+.data_table3 table {
+  border-collapse: separate;
+  spacing: 70px;
+  width: 190%;
+}
+.data_table3 th {
+  text-align: left;
+}
+.data_table3 td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.data_table3 {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-top: 80px;
+  margin-right: -30px;
+}
+.edit_font {
+  margin-top: 20px;
+  border-bottom: 1px solid #7d7d82;
+}
+.font_class {
+  margin-top: -25px;
+  text-align: center;
+}
+.image_class {
+  margin-left: 10px;
+}
+.log {
+  margin-left: 30px;
+}
+.num {
+  margin-left: 30px;
+  width: 300px;
+  border: 1px solid;
+  outline: none;
+  padding: 4px;
+  border: 1px solid #aaa6a6;
+  background-color: rgb(248, 248, 248);
+}
+.editt_class {
+  margin-right: -5px;
+}
+.links {
+  display: flex;
+}
+.link {
+  margin-top: 10px;
+  margin-left: 30px;
+}
+.url {
+  margin-top: 30px;
+  margin-left: 100px;
+}
+.log1 {
+  display: flex;
+  width: 400px;
+  height: 30px;
+  background-color: #f7f7f7;
+}
+.pic {
+  border: 1px solid #aaa6a6;
+  height: 23px;
+}
+.field_area1 {
+  display: flex;
+  width: 300px;
+  height: 50px;
+  background-color: #f5f0f0;
+}
+.abc {
+  border: 1px solid #aaa6a6;
+  height: 35px;
+  margin-top: 10px;
+}
+.images {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+.image2 {
+  margin-top: 35px;
+}
+.image4 {
+  margin-top: 35px;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.btn2 {
+  margin-right: 30px;
+}
+.btn_class1 {
+  width: 140px;
+  height: 40px;
+  background-color: #1e8826;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+.btn1 {
+  margin-right: 30px;
+  margin-top: 10px;
+  color: #b4b4b8;
+}
+.btn3 {
+  margin-top: 10px;
+ fon
+}
+.num1 {
+  width: 77px;
+  height: 80px;
+  background-color: rgb(248, 248, 248);
+  border: 1px solid #b4b4b8;
+  outline: none;
+}
+.num2 {
+  width: 77px;
+  height: 80px;
+  border: 1px solid #b4b4b8;
+  outline: none;
+}
+.num3 {
+  width: 77px;
+  height: 80px;
+  border: 1px solid #b4b4b8;
+  outline: none;
+}
+.colon {
+  line-height: 5px;
+  font-size: x-large;
+  font: bolder;
+  color: #b4b4b8;
+}
+.kiki {
+  width: 350px;
+  color: #7d7d82;
+}
+.line {
+  margin-top: 35px;
+}
+.notes {
+  margin-top: 35px;
+  margin-left: 14px;
+}
+.text-field3 {
+  margin-left: -5px;
+  width: 240px;
+  background-color: rgb(248, 248, 248);
+  margin-bottom: 20px;
+}
+.notes fieldset {
+  width: 220px;
+}
+#comments {
+  border: none;
+  background-color: rgb(248, 248, 248);
+  outline: none;
+}
+.btnnnn {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.btn_class22 {
+  width: 170px;
+  height: 40px;
+  margin-left: 200px;
+  background-color: #08ceff;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn_class33 {
+  width: 170px;
+  height: 40px;
+  margin-left: -370px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  border: 1px solid #00c5f7;
+  color: #00c5f7;
+}
+.yes_class{
+  border: none;
+  outline: none;
+  width: 500px;
+}
+*{
+  font-family: 'DM Mono', monospace;
+}
