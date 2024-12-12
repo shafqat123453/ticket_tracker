@@ -1,73 +1,89 @@
 <header class="header">
-    <h2> Ticket Time Tracker </h2> 
+
+ <%= link_to tickets_path, style: "color: #9B9BC3; text-decoration: none;" do %>
+   <h2 style="font-size: 18px;">Ticket Time Tracker</h2>
+ <% end %>
+
 </header>
+
 <div class="existing">
-  <h3> Existing tickets </h3>
+  <h3 style="font-size: 18px;"> Existing tickets </h3>
 </div>
+
 <div class="dispaly_page">
   <div class = "data_table1">
     <table>
       <thead>
         <tr>
-          <th> Ticket </th>
-          <th> Time Logged </th>
-
+          <th style="font-size: 13.02px; font-style: italic; font-weight: normal; font-family: 'Arial', sans-serif;">Ticket</th>
+          <th style="font-size: 13.02px; font-style: italic; font-weight: normal; font-family: 'Arial', sans-serif;">Time Logged</th>
         </tr>
       </thead>
       <tbody>
-      <% if @tickets.present? %>
+        <% if @tickets.present? %>
         <% @tickets.each do |ticket| %>
-          <tr>
-            <td class="dumy-class">
-              <img src="/assets/123.png" title="This is a tooltip text" width="20.51" height="20.51" alt="Image description">
-              <%= ticket.summary %>
-            </td>
-            <td>
-          <% if ticket.hours.nil? || ticket.hours.zero? %>
-            <%= link_to "Log Time", edit_ticket_path(ticket) %>
-          <% else %>
-            <%= ticket.formatted_time %>
-          <% end %>
-        </td>
-           
+            <tr>
+              <td class="dumy-class">
+                <img src="/assets/123.png" title="This is a tooltip text" width="20.51" height="20.51" alt="Image description">
+                <%= link_to ticket.summary, edit_ticket_path(ticket), data: { turbo: false }, class: 'disabled-link', style: "color: #000000;" %>
+                <% if ticket.errors[:summary].any? %>
+                  <div class="error-message">
+                    <%= ticket.errors[:summary].first %>
+                  </div>
+
+                <% end %>
+              </td>
+
+              <td>
+                <% if ticket.hours.nil? || ticket.hours.zero? %>
+                  no time logged. <%= link_to "Log Time", edit_ticket_path(ticket), data: { turbo: false }, style: "color: #000000;" %>
+                <% else %>
+                  <%= ticket.formatted_time %>
+                <% end %>
+              </td>
             
-          </tr>
+            </tr>
+          <% end %>
         <% end %>
-        <% else %>
-          <tr>
-            <td colspan="2">No tickets available.</td>
-          </tr>
-        <% end %>
-      
       </tbody>
     </table>
-    <div class="pagination">
+  <div class="pagination">
     <% if @pagy.present? %>
-    <%== pagy_nav(@pagy) %>
-  <% else %>
-    <p>No tickets to paginate.</p>
-  <% end %>
-    </div>
+      <%== pagy_nav(@pagy) %>
+    <% end %>
   </div>
+</div>
 
-
-  <div class="form1">
+<div class="form1">
   <%= form_with model: @ticket, local: true do |form| %>
-    <h3 class="heading_class">Create New Ticket</h3>
+    <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+       <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+      <ul>
+        <% @ticket.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+   </div>
+  <% end %>
 
+    <h3 class="heading_class">Create New Ticket</h3>
+  <div class= "field1">
     <fieldset>
       <legend>Ticket Type</legend>
-      <img src="/assets/123.png" title="This is a tooltip text" width="15.51" height="15.51" alt="Image description">
-      <%= form.select :ticket_type, Ticket.ticket_types.keys.map { |type| [type.humanize, type] }, { id:"ticket-type"  } %>
-   
+      <div class="drop">
+        <img src="/assets/123.png" title="This is a tooltip text" width="15.51" height="15.51" alt="Image description" class="top-margin">
+        <%= form.select :ticket_type, Ticket.ticket_types.keys.map { |type| [type.humanize, type] }, { id:"ticket-type", class: "top-margin"  } %>
+     </div>
     </fieldset>
+  </div>
 
-    <div class="field">
-      <fieldset>
-        <legend>Summary</legend>
-        <%= form.text_field :summary, class: "text-field3" %>
+  <div class="field">
+    <fieldset>
+      <legend>Summary</legend>
+        <%= form.text_field :summary, class: "text-field3", required: true %>
       </fieldset>
-    </div>
+  </div>
 
     <div class="field_area">
       <fieldset>
@@ -76,26 +92,41 @@
       </fieldset>
     </div>
 
-    <div class="field_area1">
+  <div class="field_area1">
       <fieldset>
         <legend>Hours</legend>
-        <%= form.number_field :hours, class: "number" %>
+        <%= form.number_field :hours, class: "number", min: 0, max: 100, id: "hours-input", step: 0.1 %>
       </fieldset>
-      <div class="abc">
-        <img src="/assets/124.png" title="This is a tooltip text" class="image_class" width="22.51" height="22.51" alt="Image description">
-      </div>
+    <div class="abc">
+      <%= link_to "#", title: "Go to Hours Input", id: "focus-link", data: { turbo: false } do %>
+        <%= image_tag "124.png", title: "This is a tooltip text", class: "image_class", width: "22.51", height: "22.51", alt: "Image description", data: { turbo: false } %>
+    <% end %>
     </div>
-
-    <div class="button">
+  </div>
+  
+  <div class="button">
       <%= form.submit "Save Ticket", class: "btn_class" %>
     </div>
 
-    <div class="button">
-    <button class="btn_class2" onclick="window.location.href='<%= root_path %>'">
-     Cancel
-    </button>
-    </div>
+      <div class="button">
+        <button class="btn_class2" onclick="window.location.href='<%= root_path %>'">
+          Cancel
+        </button>
+      </div>
     <% end %>
   </div>
 
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const focusLink = document.getElementById("focus-link");
+    const hoursInput = document.getElementById("hours-input");
+
+    focusLink.addEventListener("click", function (event) {
+      event.preventDefault(); 
+      hoursInput.focus(); 
+    });
+  });
+
+</script>

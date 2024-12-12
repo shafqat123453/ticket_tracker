@@ -1,37 +1,40 @@
 <header class="header">
-    <h2> Ticket Time Tracker </h2> 
+  <%= link_to tickets_path, style: "color: #9B9BC3; text-decoration: none;" do %>
+    <h2 style="font-size: 18px;">Ticket Time Tracker</h2>
+  <% end %>
 </header>
+
 <div class="existing3">
-  <h3> Existing tickets </h3>
+  <h3 style="font-size: 18px;"> Existing tickets </h3>
 </div>
+
 <div class="dispaly_page3">
   <div class = "data_table3">
-  <table>
-  <thead>
-    <tr>
-      <th> Ticket </th>
-      <th> Time Logged </th>
+    <table>
+      <thead>
+        <tr>
+         <th style="font-size: 13.02px; font-style: italic; font-weight: normal; font-family: 'Arial', sans-serif;">Ticket</th>
+         <th style="font-size: 13.02px; font-style: italic; font-weight: normal; font-family: 'Arial', sans-serif;">Time Logged</th>
 
-    </tr>
-  </thead>
+        </tr>
+      </thead>
   <tbody>
-  <% if @tickets.present? %>
-    <% @tickets.each do |ticket| %>
-      <tr>
-        <td class="dumy-class">
-          <img src="/assets/123.png" title="This is a tooltip text" width="20.51" height="20.51" alt="Image description">
-          <%= ticket.summary %>
-        </td>
-        <td>
-      <% if ticket.hours.nil? || ticket.hours.zero? %>
-        <%= link_to "Log Time", edit_ticket_path(ticket) %>
-      <% else %>
-        <%= ticket.formatted_time %>
-      <% end %>
-    </td>
-       
-        
-      </tr>
+    <% if @tickets.present? %>
+      <% @tickets.each do |ticket| %>
+        <tr>
+          <td class="dumy-class">
+            <img src="/assets/123.png" title="This is a tooltip text" width="20.51" height="20.51" alt="Image description">
+            <%= link_to ticket.summary, edit_ticket_path(ticket), data: { turbo: false }, class: 'disabled-link', style: "color: #000000;" %>
+          </td>
+
+          <td>
+           <% if ticket.hours.nil? || ticket.hours.zero? %>
+             no time logged. <%= link_to "Log Time", edit_ticket_path(ticket), data: { turbo: false }, style: "color: #000000;" %>
+             <% else %>
+             <%= ticket.formatted_time %>
+           <% end %>
+          </td>
+        </tr>
     <% end %>
     <% else %>
       <tr>
@@ -41,94 +44,316 @@
   
   </tbody>
 </table>
-<div class="pagination">
-<% if @pagy.present? %>
-<%== pagy_nav(@pagy) %>
-<% else %>
-<p>No tickets to paginate.</p>
-<% end %>
+
+  <div class="pagination">
+    <% if @pagy.present? %>
+      <%== pagy_nav(@pagy) %>
+      <% else %>
+     <p>No tickets to paginate.</p>
+    <% end %>
+  </div>
 </div>
-</div>
 
-   <div class="form3">
-        <div class = "edit_font">
-          <img src="/assets/123.png" title="This is a tooltip text" class= "image_class" width="22.51" height="22.51" alt="Image description">
-          <h3 class = "font_class"> <%= @ticket.summary%></h3>
-        </div>
+<div class="form3">
+  <%= form_with model: @ticket, local: true do |form| %>
+      <div class = "edit_font">
+        <img src="/assets/123.png" title="This is a tooltip text" class= "image_class" width="22.51" height="22.51" alt="Image description">
+        <h3 class = "font_class"> <%= @ticket.summary%></h3> 
+      </div>
 
-          <div class="log">
-            <h3> Log time manually</h3>
-
-          </div>
-            <div class="log1">
-              <div class= "numm">
-              <input type = "number" class="num">
-              </div>
-              <div class="pic">
-              <img src="/assets/124.png" title="This is a tooltip text" class= "image_class" width="18.51" height="18.51" alt="Image description">
-
-              </div>
-              
-          
-            </div>
-
-              <div class="links">
-                 <div class="link">
-                   <h4>Track with Timer</h4>
-                 </div>
-
-                 <div class="url">
-                   <a href="URL">Use count down timer</a>
-                  </div>
-                </div>
-
-                 <div class="images">
-                   <div class="image1">
-                     <input type = "number" class="num1">
-                   </div>
-                   <div class="image2">
-                   <span class="colon">:</span>
-                   </div>
-                   <div class="image3">
-                   <input type = "number" class="num2">
-                   </div>
-                   <div class="image4">
-                   <span class="colon">:</span>
-                   </div>
-                   <div class="image5">
-                     <input type = "number" class="num3">
-                   </div>
-                 </div>
-                    <div class="buttons">
-                       <div class="btn1">
-                       <a href="URL">Reset</a>
-                       </div>
-                        <div class="btn2">
-                          <input type="button" value="Start" class="btn_class1">
-                        </div>
-                        <div class="btn3">
-                          <a href="URL">Stop</a>
-                        </div>
-                        
-                    </div>
-                    <div class="line">
-                      <hr class="kiki">
-                    </div>
-                    <div class="notes">
-                       <fieldset>
-                      <legend>Notes</legend>
-                      <textarea id="comments" name="comments" rows="5" cols="40"></textarea>
-
-                      </fieldset>
-                    </div>
-                    <div class ="btnnnn">
-                    <div class="buttons1">
-                    <%= button_tag "Save", type: "button", class: "btn_class22", id: "save_button" %>
-                    </div>
-                  <div class="buttons2">
-                  <%= button_tag "Cancel", type: "button", class: "btn_class33", id: "cancel_button" %>
-                  </div>
-                  </div>
-
+    <div class="log">
+      <h3> Log time manually</h3>
     </div>
+
+    <div class="log1">
+      <div class= "numm">
+        <%= form.number_field :hours, class: "num", min: 0, max: 100, id: "hours-input", step: 0.1 %>
+      </div>
+
+      <div class>
+        <div class="pic">
+          <%= link_to "#", title: "Go to Hours Input", id: "focus-link" do %>
+        <%= image_tag "124.png", title: "This is a tooltip text", class: "image_class", width: "18.51", height: "18.51", alt: "Image description" %>
+      </div>
+    </div>
+  <%end%>    
 </div>
+
+<div class="links">
+  <div class="link">
+    <h4 class="inline-link" style="white-space: nowrap; font-size: 18px;">Track with Timer</h4>
+  </div>
+
+  <div class="url">
+    <%= link_to "Use count down timer", timer_down_path(@ticket.id), data: { turbo: false }, style: "white-space: nowrap; font-size: 14px;" %>
+  </div>
+</div>
+
+
+  <div class="images">
+      <!-- Hours Dropdown -->
+      <div class="image1">
+        <select class="num1">
+        <option value="0">00</option>
+          <option value="1">01</option>
+          <option value="2">02</option>
+          <option value="3">03</option>
+          <option value="4">04</option>
+          <option value="5">05</option>
+          <option value="6">06</option>
+          <option value="7">07</option>
+          <option value="8">08</option>
+          <option value="9">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+        </select>
+      </div>
+      <div class="image2">
+        <span class="colon">:</span>
+      </div>
+    
+      <!-- Minutes Dropdown -->
+      <div class="image3">
+        <select class="num2">
+        <option value="0" selected>00</option>
+          <option value="1">01</option>
+          <option value="2">02</option>
+          <option value="3">03</option>
+          <option value="4">04</option>
+          <option value="5">05</option>
+          <option value="6">06</option>
+          <option value="7">07</option>
+          <option value="8">08</option>
+          <option value="9">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+          <option value="50">50</option>
+          <option value="51">51</option>
+          <option value="52">52</option>
+          <option value="53">53</option>
+          <option value="54">54</option>
+          <option value="55">55</option>
+          <option value="56">56</option>
+          <option value="57">57</option>
+          <option value="58">58</option>
+          <option value="59">59</option>
+        </select>
+      </div>
+      <div class="image4">
+        <span class="colon">:</span>
+      </div>
+    
+      <!-- Seconds Dropdown -->
+      <div class="image5">
+        <select class="num3">
+        <option value="0" selected>00</option>
+          <option value="1">01</option>
+          <option value="2">02</option>
+          <option value="3">03</option>
+          <option value="4">04</option>
+          <option value="5">05</option>
+          <option value="6">06</option>
+          <option value="7">07</option>
+          <option value="8">08</option>
+          <option value="9">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+          <option value="50">50</option>
+          <option value="51">51</option>
+          <option value="52">52</option>
+          <option value="53">53</option>
+          <option value="54">54</option>
+          <option value="55">55</option>
+          <option value="56">56</option>
+          <option value="57">57</option>
+          <option value="58">58</option>
+          <option value="59">59</option>
+        </select>
+      </div>
+    </div>
+    <div class="buttons">
+    <div class="btn1">
+      <a href="#" onclick="reset()" style="color: #B4B4B8;">Reset</a>
+    </div>
+    <div class="btn2">
+    <input type="button" value="Start" class="btn_class1" onclick="watchStart()" style="color: white;">
+    </div>
+    <div class="btn3">
+      <a href="#" onclick="stop()" style="color: #B4B4B8;">Stop</a>
+    </div>
+  </div>
+  
+      <div class="line">
+        <hr class="kiki">
+      </div>
+
+      <div class="notes">
+        <fieldset>
+          <legend>Notes</legend>
+          <textarea id="comments" name="comments" rows="5" cols="40"></textarea>
+
+        </fieldset>
+      </div>
+    <div class ="btnnnn">
+      <div class="buttons1">
+        <%= form.submit "Save", class: "btn_class22" %>
+      </div>
+
+       <div class="buttons2">
+         <button class="btn_class33" onclick="window.location.href='<%= root_path %>'">
+          Cancel
+         </button>
+        </div>
+      </div>
+  <% end %>
+</div>  
+</div>
+
+<script>
+  let [seconds, minutes, hours] = [0, 0, 0];
+  let timer = null;
+
+  // Fetch dropdown elements
+  const num1 = document.querySelector(".num1");
+  const num2 = document.querySelector(".num2");
+  const num3 = document.querySelector(".num3");
+
+  // Update the display every second
+  function updateDisplay() {
+    num1.value = hours < 0 ? "0" + hours : hours;
+    num2.value = minutes < 0 ? "0" + minutes : minutes;
+    num3.value = seconds < 0 ? "0" + seconds : seconds;
+  }
+
+  // Count-up logic
+  function countup() {
+    seconds++;
+    if (seconds == 60) {
+      seconds = 0;
+      minutes++;
+    }
+    if (minutes == 60) {
+      minutes = 0;
+      hours++;
+    }
+    updateDisplay();
+  }
+
+  // Start the count-up timer
+  function watchStart() {
+    // Initialize the timer to countup from the selected values
+    hours = parseInt(num1.value);
+    minutes = parseInt(num2.value);
+    seconds = parseInt(num3.value);
+    
+    if (timer !== null) {
+      clearInterval(timer);
+    }
+    timer = setInterval(countup, 1000);
+    
+
+  }
+
+  // Stop the count-up timer
+  function stop() {
+    clearInterval(timer);
+  }
+
+  // Reset the timer
+  function reset() {
+    clearInterval(timer);
+    [seconds, minutes, hours] = [0, 0, 0];
+    updateDisplay();
+  }
+
+  // Initialize display
+  updateDisplay();
+</script>

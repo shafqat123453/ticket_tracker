@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  resources :tickets, only: [:new, :create, :index, :edit]
-   root "tickets#index"
+  resources :tickets, only: [:new, :create, :index, :edit, :update]
+  get '/tickets/:id/timer_down', to: 'tickets#timer_down', as: :timer_down
+
+  root "tickets#index"
 end

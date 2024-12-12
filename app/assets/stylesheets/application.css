@@ -15,7 +15,7 @@
  */
  
 .header h2 {
-  color: white;
+  color: #9B9BC3;
   margin-left: 80px;
 }
 .existing {
@@ -64,24 +64,28 @@ table h3 {
 .text-class {
   text-align: center;
   padding-top: 30px;
+  font-size: small;
 }
 .or-class {
   text-align: center;
+  font-size: small;
 }
 .create-class {
   text-align: center;
 }
 .text-field {
-  margin-left: 60px;
+  margin-left: 45px;
   width: 270px;
   background-color: #D9D9D9;
   margin-bottom: 20px;
   border: none;
   outline: none;
+  height: 25px;
 }
 .text-field1 {
-  margin-left: 59px;
-  width: 102px;
+  margin-left: 45px;
+  width: 108px;
+  height: 25px;
   background-color: #D9D9D9;
   margin-bottom: 20px;
   border: none;
@@ -103,7 +107,7 @@ table h3 {
   margin-top: -100px;
 }
 .form1 {
-  width: 400px;
+  width: 500px;
   height: 550px;
   background-color: rgb(248, 248, 248);
   margin-left: 400px;
@@ -128,7 +132,8 @@ table h3 {
   margin-left: 30px;
 }
 #ticket-type {
-  width: 190px;
+  margin-top: 200px;
+  width: 200px;
   border: none;
   margin-left: 2px;
   background-color: rgb(248, 248, 248);
@@ -200,8 +205,8 @@ table h3 {
 }
 
 .form2 {
-  width: 400px;
-  height: 450px;
+  width: 454px;
+  height: 637px;
   background-color: #EFEFF0;
   margin-left: 400px;
   margin-top: 70px;
@@ -215,8 +220,8 @@ table h3 {
 }
 .data_table table {
   border-collapse: separate;
-  spacing: 70px;
-  width: 190%;
+  spacing: 60px;
+  width: 180%;
 }
 .data_table th {
   text-align: left;
@@ -239,7 +244,7 @@ table h3 {
   width: 454px;
   height: 728px;
   background-color: rgb(248, 248, 248);
-  margin-left: 420px;
+  margin-left: 470px;
   margin-top: 80px;
   border: 1px solid #b4b4b8;
   border-radius: 10px;
@@ -255,8 +260,8 @@ table h3 {
 }
 .data_table3 table {
   border-collapse: separate;
-  spacing: 70px;
-  width: 190%;
+  spacing: 90px;
+  width: 300%;
 }
 .data_table3 th {
   text-align: left;
@@ -299,14 +304,15 @@ table h3 {
 }
 .links {
   display: flex;
+  
 }
 .link {
-  margin-top: 10px;
-  margin-left: 30px;
+  margin-top: 30px;
+  margin-left: 25px;
 }
 .url {
   margin-top: 30px;
-  margin-left: 100px;
+  margin-left: 90px;
 }
 .log1 {
   display: flex;
@@ -323,6 +329,11 @@ table h3 {
   width: 300px;
   height: 50px;
   background-color: #f5f0f0;
+}
+.field_area1 fieldset .number {
+
+  display: flex;
+
 }
 .abc {
   border: 1px solid #aaa6a6;
@@ -349,12 +360,13 @@ table h3 {
   margin-right: 30px;
 }
 .btn_class1 {
-  width: 140px;
-  height: 40px;
-  background-color: #1e8826;
+  width: 164px;
+  height: 52px;
+  background-color: #1E8826;
   outline: none;
   border: none;
   border-radius: 4px;
+  font-style: white;
 }
 .btn1 {
   margin-right: 30px;
@@ -399,7 +411,7 @@ table h3 {
 }
 .notes {
   margin-top: 35px;
-  margin-left: 14px;
+  margin-left: 40px;
 }
 .text-field3 {
   margin-left: -5px;
@@ -446,3 +458,95 @@ table h3 {
 *{
   font-family: 'DM Mono', monospace;
 }
+.logo{
+
+  text-decoration: #00c5f7s;
+}
+.link-no-underline {
+  color: #9B9BC3; /* Set the text color */
+  text-decoration: none; /* Remove underline */
+}
+
+.link-no-underline:hover {
+  color: #6B6BA3; /* Optional: Change color on hover */
+}
+a:active {
+  color: orange;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  color: rgb(245, 0, 20);
+  text-decoration: underline;
+}
+.texttt{
+  margin-top: 70px;
+  align-content: center;
+}
+/* Increase font size of the dropdown and options */
+select {
+  font-size: 18px;
+  padding: 5px;
+}
+
+select option {
+  font-size: 18px;
+}
+
+.inline-link {
+  display: inline;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+.dm-mono-light {
+  font-family: "DM Mono", monospace;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.dm-mono-regular {
+  font-family: "DM Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+.flash-notice {
+  background-color: #d4edda; /* Green background for success */
+  color: #155724;            /* Dark green text */
+  border: 1px solid #c3e6cb; /* Light green border */
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+select {
+  border: none;
+  width: 150px;
+  outline: none;
+  box-shadow: none;
+  padding: 10px;
+  background-color: #f8f9fa; 
+  font-size: 16px; 
+}
+.disabled-link {
+  color: gray; 
+  text-decoration: none; 
+}
+.field22 fieldset{
+
+  height: 55px;
+
+}
+.top-margin {
+  margin-top: -5px;
+}
+.drop{
+ margin-top: -9px;
+}
+.field1 fieldset{
+
+  height: 43px;
+} 
+
