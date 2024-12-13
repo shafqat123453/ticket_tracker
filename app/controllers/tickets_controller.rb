@@ -28,7 +28,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     if @ticket.update(ticket_params)
       flash[:notice] = "Ticket updated successfully."
-      redirect_to @ticket
+      redirect_to tickets_path
     else
       flash[:alert] = "There was an error updating the ticket."
       render :edit, status: :unprocessable_entity
@@ -39,6 +39,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     if @ticket.save
+      flash[:notice] = "Ticket Created successfully."
       redirect_to tickets_path
     else
       render :new

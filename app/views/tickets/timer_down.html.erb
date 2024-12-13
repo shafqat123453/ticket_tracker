@@ -1,12 +1,12 @@
 <header class="header">
   <%= link_to tickets_path, style: "color: #9B9BC3; text-decoration: none;" do %>
-    <h2 style="font-size: 18px;">Ticket Time Tracker</h2>
+    <h2 style="font-size: 24px;">Ticket Time Tracker</h2>
   <% end %>
 
 </header>
 
 <div class="existing3">
-  <h3 style="font-size: 18px;"> Existing tickets </h3>
+  <h3 style="font-size: 18px; font-weight: 500"> Existing tickets </h3>
 </div>
 
 <div class="dispaly_page3">
@@ -25,13 +25,13 @@
             <tr>
               <td class="dumy-class">
                 <img src="/assets/123.png" title="This is a tooltip text" width="20.51" height="20.51" alt="Image description">
-                <%= link_to ticket.summary, edit_ticket_path(ticket), data: { turbo: false }, class: 'disabled-link', style: "color: #000000;" %>
+                <%= link_to ticket.summary, edit_ticket_path(ticket), data: { turbo: false }, class: 'disabled-link', style: "color: #000000; font-weight: 500; font-size: 13.02px;" %>
               </td>
                 <td>
                   <% if ticket.hours.nil? || ticket.hours.zero? %>
-                    no time logged. <%= link_to "Log Time", edit_ticket_path(ticket), data: { turbo: false }, style: "color: #000000;" %>
+                    <h2 style="font-weight: 400; font-size: 13.02px; display: inline;">no time logged.</h2> <%= link_to "Log Time", edit_ticket_path(ticket), data: { turbo: false }, style: "color: #000000; font-weight: 500; font-size: 13.02px; margin-left: 10px;" %>
                     <% else %>
-                    <%= ticket.formatted_time %>
+                    <span style="font-weight: 400; font-size: 13.02px;"><%= ticket.formatted_time %></span>
                   <% end %>
                 </td>
             
@@ -68,12 +68,12 @@
       </div>
 
     <div class="log">
-      <h3 style="font-size: 18px;"> Log time manually</h3>
+      <h3 style="font-size: 18px; font-weight: 400"> Log time manually</h3>
     </div>
 
     <div class="log1">
       <div class= "numm">
-        <%= form.number_field :hours, class: "num", min: 1, max: 100, id: "hours-input", step: 0.1 %>
+<%= form.number_field :hours, class: "num", min: 0, max: 100, id: "hours-input", step: 0.1, placeholder: "0.00" %>
       </div>
 
     <div class="pic">
@@ -87,7 +87,7 @@
 
   <div class="links">
     <div class="link">
-    <h4 class="inline-link" style="white-space: nowrap; font-size: 18px;">Track with Timer</h4>
+    <h4 class="inline-link" style="white-space: nowrap; font-size: 18px; font-weight: 400">Track with Timer</h4>
     </div>
 
     <div class="url">
@@ -271,7 +271,7 @@
       </div>
 
       <div class="btn2">
-        <input type="button" value="Start" class="btn_class1" onclick="watchStart()">
+        <input type="button" value="Start" class="btn_class1" onclick="watchStart()" style="color: white;>
       </div>
 
       <div class="btn3">

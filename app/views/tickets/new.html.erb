@@ -1,13 +1,13 @@
 <header class="header">
 
  <%= link_to tickets_path, style: "color: #9B9BC3; text-decoration: none;" do %>
-   <h2 style="font-size: 18px;">Ticket Time Tracker</h2>
+   <h2 style="font-size: 24px;">Ticket Time Tracker</h2>
  <% end %>
 
 </header>
 
 <div class="existing">
-  <h3 style="font-size: 18px;"> Existing tickets </h3>
+<h3 style="font-size: 20px; font-weight: 500">Existing Tickets</h3>
 </div>
 
 <div class="dispaly_page">
@@ -25,7 +25,7 @@
             <tr>
               <td class="dumy-class">
                 <img src="/assets/123.png" title="This is a tooltip text" width="20.51" height="20.51" alt="Image description">
-                <%= link_to ticket.summary, edit_ticket_path(ticket), data: { turbo: false }, class: 'disabled-link', style: "color: #000000;" %>
+                <%= link_to ticket.summary, edit_ticket_path(ticket), data: { turbo: false }, class: 'disabled-link', style: "color: #000000; font-weight: 500; font-size: 13.02px;" %>
                 <% if ticket.errors[:summary].any? %>
                   <div class="error-message">
                     <%= ticket.errors[:summary].first %>
@@ -36,9 +36,9 @@
 
               <td>
                 <% if ticket.hours.nil? || ticket.hours.zero? %>
-                  no time logged. <%= link_to "Log Time", edit_ticket_path(ticket), data: { turbo: false }, style: "color: #000000;" %>
+                  <h2 style="font-weight: 400; font-size: 13.02px; display: inline;">no time logged.</h2> <%= link_to "Log Time", edit_ticket_path(ticket), data: { turbo: false }, style: "color: #000000; font-weight: 500; font-size: 13.02px; margin-left: 10px;" %>
                 <% else %>
-                  <%= ticket.formatted_time %>
+                  <span style="font-weight: 400; font-size: 13.02px;"><%= ticket.formatted_time %></span>
                 <% end %>
               </td>
             
@@ -69,18 +69,19 @@
 
     <h3 class="heading_class">Create New Ticket</h3>
   <div class= "field1">
-    <fieldset>
+    <fieldset style="width: 150px;">
       <legend>Ticket Type</legend>
       <div class="drop">
-        <img src="/assets/123.png" title="This is a tooltip text" width="15.51" height="15.51" alt="Image description" class="top-margin">
-        <%= form.select :ticket_type, Ticket.ticket_types.keys.map { |type| [type.humanize, type] }, { id:"ticket-type", class: "top-margin"  } %>
+        <img src="/assets/123.png" title="This is a tooltip text" width="21.51" height="21.51" alt="Image description" class="top-margin"></div>
+        <div class="imagg">
+        <%= form.select :ticket_type, Ticket.ticket_types.keys.map { |type| [type.humanize, type] }, { id:"ticket-type", class: "top-margin1", style: "width: 400px;"  } %>
      </div>
     </fieldset>
   </div>
 
   <div class="field">
     <fieldset>
-      <legend>Summary</legend>
+      <legend style="color: #grey">Summary</legend>
         <%= form.text_field :summary, class: "text-field3", required: true %>
       </fieldset>
   </div>
@@ -95,12 +96,13 @@
   <div class="field_area1">
       <fieldset>
         <legend>Hours</legend>
-        <%= form.number_field :hours, class: "number", min: 0, max: 100, id: "hours-input", step: 0.1 %>
+        <%= form.number_field :hours, class: "number", min: 0, max: 100, id: "hours-input", step: 0.1, placeholder: "0.00", value: nil %>
       </fieldset>
+      
     <div class="abc">
       <%= link_to "#", title: "Go to Hours Input", id: "focus-link", data: { turbo: false } do %>
-        <%= image_tag "124.png", title: "This is a tooltip text", class: "image_class", width: "22.51", height: "22.51", alt: "Image description", data: { turbo: false } %>
-    <% end %>
+        <%= image_tag "124.png", title: "This is a tooltip text", class: "image_class", width: "21", height: "23", alt: "Image description", data: { turbo: false } %>
+      <% end %>
     </div>
   </div>
   
